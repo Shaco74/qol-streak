@@ -18,7 +18,7 @@ type FrequencyType = "daily" | "weekly" | "monthly";
 
 type StreakeType = { name: string; frequency: FrequencyType; streak: number };
 
-export function StreakSection() {
+export default function StreakSection() {
   const initialStreaks: StreakeType[] = [
     {
       name: "Joggen gehen",
