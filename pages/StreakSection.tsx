@@ -7,6 +7,7 @@ import {
   makeStyles,
   MenuItem,
   Select,
+  SelectChangeEvent,
   styled,
   TextField,
 } from "@mui/material";
@@ -181,8 +182,16 @@ function EditLayout({
   toggleEdit: any;
 }) {
   const [frequency, setfrequency] = useState(streak.frequency);
-  const handleChange = (event: React.ChangeEvent<{ value: any }>) => {
-    setfrequency(event.target.value);
+  const handleChange = (
+    event: SelectChangeEvent<"daily" | "weekly" | "monthly">
+  ) => {
+    if (
+      event.target.value === "daily" ||
+      event.target.value === "weekly" ||
+      event.target.value === "monthly"
+    ) {
+      setfrequency(event.target.value);
+    }
   };
   return (
     <>
@@ -242,7 +251,7 @@ function EditLayout({
                     input: "Testclass",
                   },
                 }}
-                onChange={handleChange}
+                onChange={(e) => handleChange(e)}
                 sx={{
                   textAlign: "center",
                 }}
